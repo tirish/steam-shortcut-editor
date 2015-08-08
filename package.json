@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "description": "Edit Steam shortcuts",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tirish/steam-shortcuts-editor.git"
+  },
+  "author": "Tommy Irish <tirish.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tirish/steam-shortcuts-editor/issues"
+  },
+  "homepage": "https://github.com/tirish/steam-shortcuts-editor",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +20,6 @@
     "steam",
     "shortcuts"
   ],
-  "author": "Tommy Irish",
-  "license": "ISC",
   "dependencies": {
     "lodash": "^3.10.1"
   }
