@@ -1,4 +1,9 @@
 # steam-shortcut-editor
+
+```
+npm i steam-shortcut-editor
+```
+
 Edit Steam Shortcuts using [Node.js](https://nodejs.org/)
 
 Read/Write Steam `shortcuts.vdf` file.
@@ -39,6 +44,10 @@ To add new shortcuts, stringify an array of objects that look like:
 - `tags`: Array of tags. If no tags are desired, it should be an empty array.
 
 ## Usage
+
+```
+npm i steam-shortcut-editor
+```
 
 ```javascript
 var shortcut = require('steam-shortcut-editor');
