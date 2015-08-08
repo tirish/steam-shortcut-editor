@@ -1,4 +1,27 @@
 # steam-shortcut-editor
 Edit Steam Shortcuts using Node.js
 
-WIP
+Read/Write Steam `shortcuts.vdf` file.
+This file is found in `$SteamDirectory/userdata/$SteamUserId/config`.
+
+To add new shortcuts, stringify an array of objects that look like:
+```javascript
+{
+  "AppName": "Some Name",
+  "exe": "\"C:\\path\\to\\exe\"",
+  "StartDir": "\"C:\\pate\\to\\dir\\\"",
+  "icon": "",
+  "ShortcutPath": "",
+  "hidden": false,
+  "tags": [
+    "favorite"
+  ]
+}
+```
+- `AppName`: Name shown in Steam
+- `exe`: Path to exe file to run. Should be within quotes.
+- `StartDir`: Path to directory to run the exe file within. Should be within quotes. Typically, should be directory containing exe file.
+- `icon`: Path to icon file. If left blank, will use the icon for the exe file.
+- `ShortcutPath`: Not sure what this is used for, I have only ever seen it left blank.
+- `hidden`: Should be boolean value. Sometimes Steam puts seemingly random characters (like `)` and `g`) as the value, but boolean values should work as expected.
+- `tags`: Array of tags. If no tags are desired, it should be an empty array.
