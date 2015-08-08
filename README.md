@@ -40,6 +40,41 @@ To add new shortcuts, stringify an array of objects that look like:
 
 ## Usage
 
+```javascript
+var shortcut = require('steam-shortcut-editor');
+
+var fs = require('fs');
+
+
+var filePath = 'full/path/to/shortcuts.vdf';
+var writePath = filePath.replace('shortcuts','shortcuts_write');
+
+fs.readFile(filePath, {encoding:'utf8'}, function(err,data){
+
+    if(err){
+        console.log('failed to read '+filePath);
+        return;
+    }
+
+    var dataObj = shortcut.parse(data);
+
+    console.log(JSON.stringify(dataObj,null,2));
+
+    var dataStr = shortcut.stringify(dataObj);
+
+    //sanity check
+    shortcut.util.compareData(data,dataStr);
+
+    fs.writeFile(writePath,dataStr, function(err){
+        if(err){
+            console.log('failed to write '+writePath);
+        }
+    });
+
+
+});
+```
+
 Parsing is handled by `lib/parser.js`. Read the file using `fs.readFile`, specify the encoding to `utf8`, then give the string value to the parser to get a JSON blob.
 
 Writing is handled by `lib/writer.js`. Give it an array of the above Shortcut objects and it will return a string representation, that can be written to a file using `fs.writeFile`.
