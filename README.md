@@ -1,5 +1,5 @@
 # steam-shortcut-editor
-Edit Steam Shortcuts using Node.js
+Edit Steam Shortcuts using [Node.js](https://nodejs.org/)
 
 Read/Write Steam `shortcuts.vdf` file.
 This file is found in `$SteamDirectory/userdata/$SteamUserId/config`.
