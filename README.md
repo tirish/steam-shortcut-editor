@@ -4,6 +4,9 @@ Edit Steam Shortcuts using Node.js
 Read/Write Steam `shortcuts.vdf` file.
 This file is found in `$SteamDirectory/userdata/$SteamUserId/config`.
 
+After modifying the file, Steam will need to be restarted. If you modify the file, then add a Non-Steam Game using the Steam UI, it will overwrite the file. If the file is not formatted correctly after Steam restarts, it will delete the file. **Be sure to backup the file before messing with it.**
+
+
 To add new shortcuts, stringify an array of objects that look like:
 ```javascript
 {
