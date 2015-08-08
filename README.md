@@ -11,6 +11,8 @@ This has only been tested on Windows 7, so the string representation of `shortcu
 ## Sample Program
 To run the `index.js` file, the environment variable `STEAM_USER_ID` should be defined to the Steam id used in the file path to the `shortcuts.vdf` file. The `index.js` will read in `shortcuts.vdf`, dump the JSON representation to the console, then rewrite the file into `shortcuts_write.vdf` file. Before writing the file, the re-created string representation is compared against the original file to ensure the parsing/writing is working correctly.
 
+If not on Windows (or your Steam directory isn't `C:/Program Files (x86)/Steam`) you can set the Steam directory by setting the environment variable `STEAM_DIRECTORY`.
+
 
 ## Data Contract - Shortcut Object
 
