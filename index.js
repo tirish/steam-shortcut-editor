@@ -3,7 +3,7 @@ var config = require('./config');
 var shortcut = require('./lib');
 
 
-var filePath = 'C:/Program Files (x86)/Steam/userdata/'+config.steamUserId+'/config/shortcuts.vdf';
+var filePath = config.steamDirectory+'/userdata/'+config.steamUserId+'/config/shortcuts.vdf';
 var writePath = filePath.replace('shortcuts','shortcuts_write');
 
 fs.readFile(filePath, {encoding:'utf8'}, function(err,data){
