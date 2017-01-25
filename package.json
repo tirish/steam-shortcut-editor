@@ -1,6 +1,6 @@
 {
   "name": "steam-shortcut-editor",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Edit Steam shortcuts",
   "main": "index.js",
   "repository": {
@@ -21,6 +21,6 @@
     "shortcuts"
   ],
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": "3.10.1"
   }
 }
