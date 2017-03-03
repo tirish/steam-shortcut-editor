@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/tirish/steam-shortcut-editor",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter nyan"
   },
   "keywords": [
     "steam",
@@ -22,5 +22,9 @@
   ],
   "dependencies": {
     "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "should": "^11.2.0"
   }
 }
