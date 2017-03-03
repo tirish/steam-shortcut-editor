@@ -11,7 +11,7 @@ This file is found in `$SteamDirectory/userdata/$SteamUserId/config`.
 
 After modifying the file, Steam will need to be restarted. If you modify the file, then add a Non-Steam Game using the Steam UI, it will overwrite the file. If the file is not formatted correctly after Steam restarts, it will delete the file. **Be sure to backup the file before messing with it.**
 
-This has only been tested on Windows 7, so the string representation of `shortcuts.vdf` might vary by platform.
+This has only been tested on Windows 10 and Windows 7, so the string representation of `shortcuts.vdf` might vary by platform.
 
 ## Sample Program
 To run the `sample.js` file, the environment variable `STEAM_USER_ID` should be defined to the Steam id used in the file path to the `shortcuts.vdf` file. The `sample.js` will read in `shortcuts.vdf`, dump the JSON representation to the console, then rewrite the file into `shortcuts_write.vdf` file. Before writing the file, the re-created string representation is compared against the original file to ensure the parsing/writing is working correctly.
