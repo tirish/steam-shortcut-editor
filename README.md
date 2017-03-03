@@ -91,4 +91,4 @@ fs.readFile(filePath, {encoding:'utf8'}, function(err,data){
 
 Parsing is handled by `lib/parser.js`. Read the file using `fs.readFile`, specify the encoding to `utf8`, then give the string value to the parser to get a JSON blob.
 
-Writing is handled by `lib/writer.js`. Give it an array of the above Shortcut objects and it will return a string representation, that can be written to a file using `fs.writeFile`.
+Writing is handled by `lib/writer.js`. Give it an object with a `shortcuts` property set to an array of the above Shortcut objects and it will return a string representation, that can be written to a file using `fs.writeFile`.
