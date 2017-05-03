@@ -31,7 +31,7 @@ describe('write-read tests', function(){
         };
 
         var str = shortcut.stringify(input);
-        var output = shortcut.parse(str);
+        var output = shortcut.parse(str, { autoConvertBooleans : true, autoConvertArrays: true});
 
         should.deepEqual(input, output);
         done();
