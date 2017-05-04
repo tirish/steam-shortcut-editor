@@ -134,7 +134,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts1', function(input){
 
-            var obj = shortcut.parse(input);
+            var obj = shortcut.parse(input, { autoConvertArrays: true });
 
             var expected = {
                 shortcuts: [
@@ -190,7 +190,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts2', function(input){
 
-            var obj = shortcut.parse(input, { autoConvertBooleans: true, autoConvertArrays: true });
+            var obj = shortcut.parse(input);
 
 
             var expected = {
@@ -228,7 +228,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts3', function(input){
 
-            var obj = shortcut.parse(input, { autoConvertBooleans: true, autoConvertArrays: true });
+            var obj = shortcut.parse(input);
 
             var expected = {
                 shortcuts: [
