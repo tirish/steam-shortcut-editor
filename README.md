@@ -89,6 +89,35 @@ fs.readFile(filePath, {encoding:'utf8'}, function(err,data){
 });
 ```
 
+
 Parsing is handled by `lib/parser.js`. Read the file using `fs.readFile`, specify the encoding to `utf8`, then give the string value to the parser to get a JSON blob.
 
 Writing is handled by `lib/writer.js`. Give it an object with a `shortcuts` property set to an array of the above Shortcut objects and it will return a string representation, that can be written to a file using `fs.writeFile`.
+
+
+### `shortcut.parse`
+
+The `shortcut.parse(input[, options])` function accepts an optional `options` argument. This `options` argument should be an object the looks like:
+```javascript
+{
+    autoConvertBooleans: true,
+    autoConvertArrays: true,
+    dateProperties: ['LastPlayTime']
+}
+```
+- If `autoConvertBooleans` is truthy, numbers that equal `1` will be set to `true` and numbers that equal `0` will be set to `false`. Handles the common flags within a shortcut object.
+- If `autoConvertArrays` is truthy, any objects with only numbers for properties (like the `shortcuts` object) will be changed to be arrays.
+- The `dateProperties` array is used to indicate properties that should be automatically adjusted from numbers to `Date` objects. Numbers are adjusted to dates by doing `new Date(number * 1000)`.
+
+If no options are passed to `shortcut.parse(...)`, it will use the default settings of `{ autoConvertBooleans: true, autoConvertArrays: true }`.
+
+### `shortcut.stringify`
+
+Will automatically convert..
+- boolean values to the numbers `1` and `0` (for `true` and `false`)
+- `Date` objects to numbers (using `date.valueOf() / 1000`)
+- arrays to objects
+- `null` and `undefined` to empty string
+
+
+
