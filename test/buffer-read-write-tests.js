@@ -4,7 +4,7 @@ var should = require('should');
 
 function readFile(fileName, cb){
     var filePath = __dirname + '/static/'+fileName+'.vdf';
-    fs.readFile(filePath, {encoding:'utf8'}, function(err, data){
+    fs.readFile(filePath, function(err, data){
 
         if(err){
             console.log('failed to read '+filePath);
@@ -14,14 +14,16 @@ function readFile(fileName, cb){
     });
 }
 
+
 describe('read-write tests', function(){
+
 
     it('reads and writes same content: shortcuts1', function(done){
 
 
         readFile('shortcuts1', function(input){
 
-            var obj = shortcut.parse(input, { autoConvertBooleans: true, autoConvertArrays: true });
+            var obj = shortcut.bparse(input, { autoConvertBooleans: true, autoConvertArrays: true });
 
             var expected = {
                 shortcuts: [
@@ -29,8 +31,8 @@ describe('read-write tests', function(){
                         AppName: 'Minecraft - FTB',
                         exe: '"U:\\Users\\Me\\Minecraft\\Feed the Beast\\launcher^FTB_Launcher.exe"',
                         StartDir: '"U:\\Users\\Me\\Minecraft\\Feed the Beast\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -40,8 +42,8 @@ describe('read-write tests', function(){
                         AppName: 'Minecraft',
                         exe: '"U:\\Users\\Me\\Minecraft\\Vanilla\\Minecraft_New.exe"',
                         StartDir: '"U:\\Users\\Me\\Minecraft\\Vanilla\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -51,8 +53,8 @@ describe('read-write tests', function(){
                         AppName: 'Tom Clancy\'s The Division',
                         exe: '"C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Tom Clancy\'s The Division\\TheDivision.exe"',
                         StartDir: '"C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Tom Clancy\'s The Division\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -63,9 +65,9 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.stringify(obj);
+            var output = shortcut.bwrite(obj);
 
-            should.equal(input, output);
+            should.deepEqual(input, output);
             done();
 
         });
@@ -77,7 +79,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts1', function(input){
 
-            var obj = shortcut.parse(input, { autoConvertBooleans: true });
+            var obj = shortcut.bparse(input, { autoConvertBooleans: true });
 
             var expected = {
                 shortcuts: {
@@ -85,8 +87,8 @@ describe('read-write tests', function(){
                         AppName: 'Minecraft - FTB',
                         exe: '"U:\\Users\\Me\\Minecraft\\Feed the Beast\\launcher^FTB_Launcher.exe"',
                         StartDir: '"U:\\Users\\Me\\Minecraft\\Feed the Beast\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -96,8 +98,8 @@ describe('read-write tests', function(){
                         AppName: 'Minecraft',
                         exe: '"U:\\Users\\Me\\Minecraft\\Vanilla\\Minecraft_New.exe"',
                         StartDir: '"U:\\Users\\Me\\Minecraft\\Vanilla\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -107,8 +109,8 @@ describe('read-write tests', function(){
                         AppName: 'Tom Clancy\'s The Division',
                         exe: '"C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Tom Clancy\'s The Division\\TheDivision.exe"',
                         StartDir: '"C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Tom Clancy\'s The Division\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -119,9 +121,9 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.stringify(obj);
+            var output = shortcut.bwrite(obj);
 
-            should.equal(input, output);
+            should.deepEqual(input, output);
             done();
 
         });
@@ -133,7 +135,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts1', function(input){
 
-            var obj = shortcut.parse(input, { autoConvertArrays: true });
+            var obj = shortcut.bparse(input, { autoConvertArrays: true });
 
             var expected = {
                 shortcuts: [
@@ -141,8 +143,8 @@ describe('read-write tests', function(){
                         AppName: 'Minecraft - FTB',
                         exe: '"U:\\Users\\Me\\Minecraft\\Feed the Beast\\launcher^FTB_Launcher.exe"',
                         StartDir: '"U:\\Users\\Me\\Minecraft\\Feed the Beast\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: 0,
                         AllowDesktopConfig: 1,
                         OpenVR: 0,
@@ -152,8 +154,8 @@ describe('read-write tests', function(){
                         AppName: 'Minecraft',
                         exe: '"U:\\Users\\Me\\Minecraft\\Vanilla\\Minecraft_New.exe"',
                         StartDir: '"U:\\Users\\Me\\Minecraft\\Vanilla\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: 0,
                         AllowDesktopConfig: 1,
                         OpenVR: 0,
@@ -163,8 +165,8 @@ describe('read-write tests', function(){
                         AppName: 'Tom Clancy\'s The Division',
                         exe: '"C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Tom Clancy\'s The Division\\TheDivision.exe"',
                         StartDir: '"C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Tom Clancy\'s The Division\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         IsHidden: 0,
                         AllowDesktopConfig: 1,
                         OpenVR: 0,
@@ -175,9 +177,9 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.stringify(obj);
+            var output = shortcut.bwrite(obj);
 
-            should.equal(input, output);
+            should.deepEqual(input, output);
             done();
 
         });
@@ -189,7 +191,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts2', function(input){
 
-            var obj = shortcut.parse(input);
+            var obj = shortcut.bparse(input);
 
 
             var expected = {
@@ -198,9 +200,9 @@ describe('read-write tests', function(){
                         AppName: 'AI Suite 3',
                         exe: '"C:\\Program Files (x86)\\ASUS\\AI Suite III\\AISuite3.exe"',
                         StartDir: '"C:\\Program Files (x86)\\ASUS\\AI Suite III\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
-                        LaunchOptions: undefined,
+                        icon: '',
+                        ShortcutPath: '',
+                        LaunchOptions: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -212,9 +214,9 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.stringify(obj);
+            var output = shortcut.bwrite(obj);
 
-            should.equal(input, output);
+            should.deepEqual(input, output);
             done();
 
         });
@@ -227,7 +229,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts3', function(input){
 
-            var obj = shortcut.parse(input);
+            var obj = shortcut.bparse(input);
 
             var expected = {
                 shortcuts: [
@@ -235,9 +237,9 @@ describe('read-write tests', function(){
                         AppName: 'AI Suite 3',
                         exe: '"C:\\Program Files (x86)\\ASUS\\AI Suite III\\AISuite3.exe"',
                         StartDir: '"C:\\Program Files (x86)\\ASUS\\AI Suite III\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
-                        LaunchOptions: undefined,
+                        icon: '',
+                        ShortcutPath: '',
+                        LaunchOptions: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -248,9 +250,9 @@ describe('read-write tests', function(){
                         AppName: '3D Vision Photo Viewer',
                         exe: '"C:\\Program Files (x86)\\NVIDIA Corporation\\3D Vision\\nvstview.exe"',
                         StartDir: '"C:\\Program Files (x86)\\NVIDIA Corporation\\3D Vision\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
-                        LaunchOptions: undefined,
+                        icon: '',
+                        ShortcutPath: '',
+                        LaunchOptions: '',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
@@ -262,9 +264,9 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.stringify(obj);
+            var output = shortcut.bwrite(obj);
 
-            should.equal(input, output);
+            should.deepEqual(input, output);
             done();
 
         });
@@ -277,8 +279,7 @@ describe('read-write tests', function(){
 
         readFile('shortcuts4', function(input){
 
-            console.log(JSON.stringify({str: input}));
-            var obj = shortcut.parse(input, { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['LastPlayTime']});
+            var obj = shortcut.bparse(input, { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['LastPlayTime']});
 
             var expected = {
                 shortcuts: [
@@ -286,21 +287,21 @@ describe('read-write tests', function(){
                         AppName: 'The Legend of Zelda: Breath of the Wild',
                         exe: '"C:\\Games\\CEMU\\Cemu.exe"',
                         StartDir: '"C:\\Games\\CEMU\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         LaunchOptions: '-f -g "C:\\Games\\CEMU Roms\\The Legend of Zelda Breath of the Wild\\00050000101C9500\\code\\U-King.rpx"',
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
-                        LastPlayTime: new Date('2017-05-01 09:24:13.000 -0400'),
+                        LastPlayTime: new Date('2017-05-01 09:24:07.000 -0400'),
                         tags: []
                     },
                     {
                         AppName: 'Xenoblade Chronicles X',
                         exe: '"C:\\Games\\CEMU\\Cemu.exe"',
                         StartDir: '"C:\\Games\\CEMU\\"',
-                        icon: undefined,
-                        ShortcutPath: undefined,
+                        icon: '',
+                        ShortcutPath: '',
                         LaunchOptions: '-f -g "C:\\Games\\CEMU Roms\\Xenoblade Chronicles X\\code\\spaceTravel.rpx"',
                         IsHidden: false,
                         AllowDesktopConfig: true,
@@ -313,9 +314,9 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.stringify(obj);
+            var output = shortcut.bwrite(obj);
 
-            should.equal(input, output);
+            should.deepEqual(input, output);
             done();
 
         });
