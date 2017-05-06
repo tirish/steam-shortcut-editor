@@ -14,24 +14,32 @@ describe('write-read tests', function(){
             d: true,
             e: [
                 'hello',
-                'world'
+                'world',
+                78,
+                false
             ],
             f: {
                 g: [
                     {
                         name: 'hello',
-                        value: 'hi'
+                        value: 'hi',
+                        d: 7786
                     },
                     {
                         n: 'hola',
-                        v: 'ciao'
+                        v: 'ciao',
+                        ddd: 1244004
                     }
                 ]
-            }
+            },
+            someDate: new Date(2001, 11, 15),
+            numBER: 12345,
+            NUMber: 92928,
+            flag: false
         };
 
-        var str = shortcut.stringify(input);
-        var output = shortcut.parse(str, { autoConvertBooleans : true, autoConvertArrays: true});
+        var buffer = shortcut.writeBuffer(input);
+        var output = shortcut.parseBuffer(buffer, { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['someDate']});
 
         should.deepEqual(input, output);
         done();
