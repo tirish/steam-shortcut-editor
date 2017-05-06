@@ -52,7 +52,7 @@ To add new shortcuts, write an object that looks like:
 ## Usage
 
 ```
-npm i steam-shortcut-editor
+npm i steam-shortcut-editor --save
 ```
 
 ```javascript
