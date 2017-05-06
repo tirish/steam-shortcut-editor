@@ -1,6 +1,6 @@
 {
   "name": "steam-shortcut-editor",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Edit Steam shortcuts",
   "main": "index.js",
   "repository": {
