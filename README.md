@@ -21,7 +21,7 @@ If not on Windows (or your Steam directory isn't `C:/Program Files (x86)/Steam`)
 
 ## Data Contract - Shortcut Object
 
-To add new shortcuts, stringify an object that looks like:
+To add new shortcuts, write an object that looks like:
 ```javascript
 {
   "shortcuts": [
