@@ -1,32 +1,33 @@
 var fs = require('fs');
-var config = require('./config');
+var config = {
+    steamUserId: process.env.STEAM_USER_ID,
+    steamDirectory: process.env.STEAM_DIRECTORY || 'C:/Program Files (x86)/Steam'
+};
 var shortcut = require('./lib');
 
 
 var filePath = config.steamDirectory+'/userdata/'+config.steamUserId+'/config/shortcuts.vdf';
 var writePath = filePath.replace('shortcuts','shortcuts_write');
 
-fs.readFile(filePath, {encoding:'utf8'}, function(err,data){
+shortcut.parseFile(filePath,
+    { autoConvertArrays: true, autoConvertBooleans: true, dateProperties: ['LastPlayTime']},
+function(err, obj, inputBuffer){
 
     if(err){
         console.log('failed to read '+filePath);
         return;
     }
 
-    var dataObj = shortcut.parse(data);
+    //Buffer read from file
+    console.log('Raw Buffer:', inputBuffer);
 
-    console.log(JSON.stringify(dataObj,null,2));
+    //Parsed Object
+    console.log(JSON.stringify(obj,null,2));
 
-    var dataStr = shortcut.stringify(dataObj);
-
-    //sanity check
-    shortcut.util.compareData(data,dataStr);
-
-    fs.writeFile(writePath,dataStr, function(err){
+    shortcut.writeFile(writePath, obj, function (err) {
         if(err){
             console.log('failed to write '+writePath);
         }
     });
-
 
 });
