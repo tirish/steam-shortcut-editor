@@ -1,5 +1,5 @@
-var shortcut = require('../lib');
-var should = require('should');
+const shortcut = require('../lib');
+const should = require('should');
 
 
 describe('write-read tests', function(){
@@ -38,8 +38,8 @@ describe('write-read tests', function(){
             flag: false
         };
 
-        var buffer = shortcut.writeBuffer(input);
-        var output = shortcut.parseBuffer(buffer, { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['someDate']});
+        let buffer = shortcut.writeBuffer(input);
+        let output = shortcut.parseBuffer(buffer, { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['someDate']});
 
         should.deepEqual(input, output);
         done();

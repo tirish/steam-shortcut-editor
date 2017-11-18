@@ -1,18 +1,7 @@
-var fs = require('fs');
-var shortcut = require('../lib');
-var should = require('should');
+const fs = require('fs');
+const shortcut = require('../lib');
+const should = require('should');
 
-function readFile(fileName, cb) {
-    var filePath = __dirname + '/static/' + fileName + '.vdf';
-    fs.readFile(filePath, { encoding: 'utf8' }, function (err, data) {
-
-        if (err) {
-            console.log('failed to read ' + filePath);
-            throw err;
-        }
-        cb(data);
-    });
-}
 
 function getFilePath(fileName) {
     return __dirname + '/static/' + fileName + '.vdf';
