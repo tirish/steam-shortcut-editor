@@ -1,33 +1,22 @@
-var fs = require('fs');
-var shortcut = require('../lib');
-var should = require('should');
+const fs = require('fs');
+const shortcut = require('../lib');
+const should = require('should');
 
-function readFile(fileName, cb){
-    var filePath = __dirname + '/static/'+fileName+'.vdf';
-    fs.readFile(filePath, {encoding:'utf8'}, function(err, data){
 
-        if(err){
-            console.log('failed to read '+filePath);
-            throw err;
-        }
-        cb(data);
-    });
+function getFilePath(fileName) {
+    return __dirname + '/static/' + fileName + '.vdf';
 }
 
-function getFilePath(fileName){
-    return __dirname + '/static/'+fileName+'.vdf';
-}
+describe('read-write tests', function () {
 
-describe('read-write tests', function(){
-
-    it('reads and writes same content: shortcuts1', function(done){
+    it('reads and writes same content: shortcuts1', function (done) {
 
 
-        shortcut.parseFile(getFilePath('shortcuts1'), function(err, obj, buffer){
+        shortcut.parseFile(getFilePath('shortcuts1'), function (err, obj, buffer) {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'Minecraft - FTB',
@@ -67,7 +56,7 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -76,14 +65,14 @@ describe('read-write tests', function(){
 
     });
 
-    it('reads and writes same content: shortcuts1 (no auto arrays)', function(done){
+    it('reads and writes same content: shortcuts1 (no auto arrays)', function (done) {
 
 
-        shortcut.parseFile(getFilePath('shortcuts1'), { autoConvertBooleans: true }, function(err, obj, buffer){
+        shortcut.parseFile(getFilePath('shortcuts1'), { autoConvertBooleans: true }, function (err, obj, buffer) {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: {
                     0: {
                         AppName: 'Minecraft - FTB',
@@ -94,7 +83,7 @@ describe('read-write tests', function(){
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
-                        tags: {0: 'favorite'}
+                        tags: { 0: 'favorite' }
                     },
                     1: {
                         AppName: 'Minecraft',
@@ -105,7 +94,7 @@ describe('read-write tests', function(){
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
-                        tags: {0: 'favorite'}
+                        tags: { 0: 'favorite' }
                     },
                     2: {
                         AppName: 'Tom Clancy\'s The Division',
@@ -116,14 +105,14 @@ describe('read-write tests', function(){
                         IsHidden: false,
                         AllowDesktopConfig: true,
                         OpenVR: false,
-                        tags: {0: 'favorite'}
+                        tags: { 0: 'favorite' }
                     }
                 }
             };
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -132,14 +121,14 @@ describe('read-write tests', function(){
 
     });
 
-    it('reads and writes same content: shortcuts1 (no auto booleans)', function(done){
+    it('reads and writes same content: shortcuts1 (no auto booleans)', function (done) {
 
 
-        shortcut.parseFile(getFilePath('shortcuts1'), { autoConvertArrays: true }, function(err, obj, buffer){
+        shortcut.parseFile(getFilePath('shortcuts1'), { autoConvertArrays: true }, function (err, obj, buffer) {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'Minecraft - FTB',
@@ -179,7 +168,7 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -188,14 +177,14 @@ describe('read-write tests', function(){
 
     });
 
-    it('reads and writes same content: shortcuts2', function(done){
+    it('reads and writes same content: shortcuts2', function (done) {
 
 
-        shortcut.parseFile(getFilePath('shortcuts2'), function(err, obj, buffer){
+        shortcut.parseFile(getFilePath('shortcuts2'), function (err, obj, buffer) {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'AI Suite 3',
@@ -215,7 +204,7 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -225,14 +214,14 @@ describe('read-write tests', function(){
     });
 
 
-    it('reads and writes same content: shortcuts3', function(done){
+    it('reads and writes same content: shortcuts3', function (done) {
 
 
-        shortcut.parseFile(getFilePath('shortcuts3'), function(err, obj, buffer){
+        shortcut.parseFile(getFilePath('shortcuts3'), function (err, obj, buffer) {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'AI Suite 3',
@@ -265,7 +254,7 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -275,14 +264,14 @@ describe('read-write tests', function(){
     });
 
 
-    it('reads and writes same content: shortcuts4', function(done){
+    it('reads and writes same content: shortcuts4', function (done) {
 
 
-        shortcut.parseFile(getFilePath('shortcuts4'), { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['LastPlayTime']}, function(err, obj, buffer){
+        shortcut.parseFile(getFilePath('shortcuts4'), { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['LastPlayTime'] }, function (err, obj, buffer) {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'The Legend of Zelda: Breath of the Wild',
@@ -315,7 +304,7 @@ describe('read-write tests', function(){
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -325,14 +314,14 @@ describe('read-write tests', function(){
     });
 
 
-    it('reads and writes same content: shortcuts5', function(done){
+    it('reads and writes same content: shortcuts5', function (done) {
 
 
-        shortcut.parseFile(getFilePath('shortcuts5'), { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['LastPlayTime']}, function(err, obj, buffer){
+        shortcut.parseFile(getFilePath('shortcuts5'), { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['LastPlayTime'] }, function (err, obj, buffer) {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         appname: '中文',
@@ -345,14 +334,14 @@ describe('read-write tests', function(){
                         AllowDesktopConfig: true,
                         OpenVR: false,
                         LastPlayTime: new Date('2017-05-05 15:48:09.000 -0400'),
-                        tags: [ 'Test' ]
+                        tags: ['Test']
                     }
                 ]
             };
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -360,6 +349,23 @@ describe('read-write tests', function(){
         });
 
     });
+
+
+    it('reads and writes same content: shortcuts6', function (done) {
+
+
+        shortcut.parseFile(getFilePath('shortcuts6'), { autoConvertBooleans: true, autoConvertArrays: true, dateProperties: ['LastPlayTime'] }, function (err, obj, buffer) {
+
+            should.equal(null, err);
+
+            const output = shortcut.writeBuffer(obj);
+
+            should.deepEqual(buffer, output);
+            done();
+
+        });
+
+    }).timeout(10000);
 
 });
 
