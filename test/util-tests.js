@@ -17,7 +17,6 @@ describe('util tests', function () {
             util._multiplesOf(c.n, c.of).should.eql(c.out);
         });
 
-
         done();
     });
 

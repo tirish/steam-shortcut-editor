@@ -16,7 +16,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'Minecraft - FTB',
@@ -56,7 +56,7 @@ describe('read-write tests', function () {
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -72,7 +72,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: {
                     0: {
                         AppName: 'Minecraft - FTB',
@@ -112,7 +112,7 @@ describe('read-write tests', function () {
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -128,7 +128,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'Minecraft - FTB',
@@ -168,7 +168,7 @@ describe('read-write tests', function () {
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -184,7 +184,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'AI Suite 3',
@@ -204,7 +204,7 @@ describe('read-write tests', function () {
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -221,7 +221,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'AI Suite 3',
@@ -254,7 +254,7 @@ describe('read-write tests', function () {
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -271,7 +271,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         AppName: 'The Legend of Zelda: Breath of the Wild',
@@ -304,7 +304,7 @@ describe('read-write tests', function () {
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -321,7 +321,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var expected = {
+            const expected = {
                 shortcuts: [
                     {
                         appname: '中文',
@@ -341,7 +341,7 @@ describe('read-write tests', function () {
 
             should.deepEqual(expected, obj);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();
@@ -358,7 +358,7 @@ describe('read-write tests', function () {
 
             should.equal(null, err);
 
-            var output = shortcut.writeBuffer(obj);
+            const output = shortcut.writeBuffer(obj);
 
             should.deepEqual(buffer, output);
             done();

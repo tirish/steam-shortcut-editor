@@ -6,7 +6,7 @@ describe('write-read tests', function(){
 
     it('writes and reads same object', function(done){
 
-        var input = {
+        const input = {
             a: 'one',
             b: {
                 c: 'two'
