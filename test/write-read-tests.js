@@ -35,7 +35,10 @@ describe('write-read tests', function(){
             someDate: new Date(2001, 11, 15),
             numBER: 12345,
             NUMber: 92928,
-            flag: false
+            flag: false,
+            tags: [
+                7800
+            ]
         };
 
         let buffer = shortcut.writeBuffer(input);
