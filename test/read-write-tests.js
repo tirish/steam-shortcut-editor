@@ -1,4 +1,3 @@
-const fs = require('fs');
 const shortcut = require('../lib');
 const should = require('should');
 

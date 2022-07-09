@@ -1,6 +1,6 @@
 {
   "name": "steam-shortcut-editor",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Edit Steam shortcuts",
   "main": "index.js",
   "repository": {
@@ -14,18 +14,18 @@
   },
   "homepage": "https://github.com/tirish/steam-shortcut-editor",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter nyan"
+    "test": "mocha --reporter nyan"
   },
   "keywords": [
     "steam",
     "shortcuts"
   ],
   "dependencies": {
-    "lodash": "4.17.4",
+    "lodash": "^4.17.21",
     "object-sizeof": "^1.2.0"
   },
   "devDependencies": {
-    "mocha": "^4.0.1",
+    "mocha": "^10.0.0",
     "should": "^13.1.3"
   }
 }
