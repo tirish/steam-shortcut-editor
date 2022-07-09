@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/tirish/steam-shortcut-editor",
   "scripts": {
-    "test": "mocha --reporter nyan"
+    "test": "mocha"
   },
   "keywords": [
     "steam",
